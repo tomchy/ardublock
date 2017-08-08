@@ -15,9 +15,9 @@ public class SerialReadPolyBlock extends TranslatorBlock
 	public String toCode() throws SocketNullException, SubroutineNotDeclaredException
 	{
 		translator.addSetupCommand("Serial.begin(9600);");
-		
-		String ret = "Serial.read()";
-		
+
+		String ret = "(char) Serial.read()";
+
 		return codePrefix+ret+codeSuffix;
 	}
 }
