@@ -24,7 +24,7 @@ public class MessageBlock extends TranslatorBlock
 		ret = ret.replaceAll("<&nothing>", "");
 		// A way to add \t to messages
 		ret = ret.replaceAll("<&tab>", "\\\\t");
-		ret = codePrefix + "\"" + ret + "\"" + codeSuffix;
+		ret = codePrefix + "String(" + '"' + ret + '"' + ")" + codeSuffix;
 		TranslatorBlock translatorBlock = this.getTranslatorBlockAtSocket(0, codePrefix, codeSuffix);
 		if (translatorBlock != null)
 		{

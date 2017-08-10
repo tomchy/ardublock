@@ -5,4 +5,5 @@ compile:
 	mvn clean package
 
 install:
+	mkdir -p ~/Arduino/tools/ArduBlockTool/tool
 	cp target/ardublock-all.jar ~/Arduino/tools/ArduBlockTool/tool/ardublock-all.jar

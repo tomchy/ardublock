@@ -34,19 +34,19 @@ public class Translator
 	private Set<String> functionNameSet;
 	private Set<TranslatorBlock> bodyTranslatreFinishCallbackSet;
 	private BlockAdaptor blockAdaptor;
-	
+
 	private Set<String> inputPinSet;
 	private Set<String> outputPinSet;
-	
+
 	private Map<String, String> numberVariableSet;
 	private Map<String, String> booleanVariableSet;
 	private Map<String, String> stringVariableSet;
 	private Map<String, Object> internalData;
-	
+
 	private Workspace workspace;
-	
+
 	private String rootBlockName;
-	
+
 	private int variableCnt;
 	private boolean isScoopProgram;
 	private boolean isGuinoProgram;
@@ -56,11 +56,11 @@ public class Translator
 		workspace = ws;
 		reset();
 	}
-	
+
 	public String genreateHeaderCommand()
 	{
 		StringBuilder headerCommand = new StringBuilder();
-		
+
 		if (!headerFileSet.isEmpty())
 		{
 			for (String file:headerFileSet)
@@ -69,7 +69,7 @@ public class Translator
 			}
 			headerCommand.append("\n");
 		}
-		
+
 		if (!definitionSet.isEmpty())
 		{
 			for (String command:definitionSet)
@@ -78,7 +78,7 @@ public class Translator
 			}
 			headerCommand.append("\n");
 		}
-		
+
 		if (!functionNameSet.isEmpty())
 		{
 			for (String functionName:functionNameSet)
@@ -87,15 +87,15 @@ public class Translator
 			}
 			headerCommand.append("\n");
 		}
-		
+
 		return headerCommand.toString() + generateSetupFunction() +generateGuinoFunction();
 	}
-	
+
 	public String generateSetupFunction()
 	{
 		StringBuilder setupFunction = new StringBuilder();
 		setupFunction.append("void setup()\n{\n");
-		
+
 		if (!inputPinSet.isEmpty())
 		{
 			for (String pinNumber:inputPinSet)
@@ -110,27 +110,27 @@ public class Translator
 				setupFunction.append("pinMode( " + pinNumber + " , OUTPUT);\n");
 			}
 		}
-		
+
 		if (!setupCommand.isEmpty())
 		{
 			for (String command:setupCommand)
 			{
 				setupFunction.append(command + "\n");
 			}
-			
+
 		}
 
-		
+
 		setupFunction.append("}\n\n");
-		
+
 		return setupFunction.toString();
 	}
-	
+
 	public String generateGuinoFunction()
 	{
 		StringBuilder guinoFunction = new StringBuilder();
-		
-		
+
+
 		if (!guinoCommand.isEmpty())
 		{
 			guinoFunction.append("void GUINO_DEFINIR_INTERFACE()\n{\n");
@@ -140,11 +140,11 @@ public class Translator
 			}
 			guinoFunction.append("}\n\n");
 		}
-		
-		
+
+
 		return guinoFunction.toString();
 	}
-	
+
 	public String translate(Long blockId) throws SocketNullException, SubroutineNotDeclaredException, BlockException
 	{
 		TranslatorBlockFactory translatorBlockFactory = new TranslatorBlockFactory();
@@ -152,12 +152,12 @@ public class Translator
 		TranslatorBlock rootTranslatorBlock = translatorBlockFactory.buildTranslatorBlock(this, blockId, block.getGenusName(), "", "", block.getBlockLabel());
 		return rootTranslatorBlock.toCode();
 	}
-	
+
 	public BlockAdaptor getBlockAdaptor()
 	{
 		return blockAdaptor;
 	}
-	
+
 	public void reset()
 	{
 		headerFileSet = new LinkedHashSet<String>();
@@ -168,26 +168,26 @@ public class Translator
 		inputPinSet = new HashSet<String>();
 		outputPinSet = new HashSet<String>();
 		bodyTranslatreFinishCallbackSet = new HashSet<TranslatorBlock>();
-		
+
 		numberVariableSet = new HashMap<String, String>();
 		booleanVariableSet = new HashMap<String, String>();
 		stringVariableSet = new HashMap<String, String>();
-		
+
 		internalData =  new HashMap<String, Object>();
 		blockAdaptor = buildOpenBlocksAdaptor();
-		
+
 		variableCnt = 0;
-		
+
 		rootBlockName = null;
 		isScoopProgram = false;
 		isGuinoProgram = false;
 	}
-	
+
 	private BlockAdaptor buildOpenBlocksAdaptor()
 	{
 		return new OpenBlocksAdaptor();
 	}
-	
+
 	public void addHeaderFile(String headerFile)
 	{
 		if (!headerFileSet.contains(headerFile))
@@ -195,7 +195,7 @@ public class Translator
 			headerFileSet.add(headerFile);
 		}
 	}
-	
+
 	public void addSetupCommand(String command)
 	{
 		if (!setupCommand.contains(command))
@@ -203,85 +203,85 @@ public class Translator
 			setupCommand.add(command);
 		}
 	}
-	
+
 	public void addSetupCommandForced(String command)
 	{
 		setupCommand.add(command);
 	}
-	
+
 	public void addGuinoCommand(String command)
 	{
-		
+
 			guinoCommand.add(command);
-		
+
 	}
-	
+
 	public void addDefinitionCommand(String command)
 	{
 		definitionSet.add(command);
 	}
-	
+
 	public void addInputPin(String pinNumber)
 	{
 		inputPinSet.add(pinNumber);
 	}
-	
+
 	public void addOutputPin(String pinNumber)
 	{
 		outputPinSet.add(pinNumber);
 	}
-	
+
 	public String getNumberVariable(String userVarName)
 	{
 		return numberVariableSet.get(userVarName);
 	}
-	
+
 	public String getBooleanVariable(String userVarName)
 	{
 		return booleanVariableSet.get(userVarName);
 	}
-	
+
 	public String getStringVariable(String userVarName)
 	{
 		return stringVariableSet.get(userVarName);
 	}
-	
+
 	public void addNumberVariable(String userVarName, String internalName)
 	{
 		numberVariableSet.put(userVarName, internalName);
 	}
-	
+
 	public void addBooleanVariable(String userVarName, String internalName)
 	{
 		booleanVariableSet.put(userVarName, internalName);
 	}
-	
+
 	public void addStringVariable(String userVarName, String internalName)
 	{
 		stringVariableSet.put(userVarName, internalName);
 	}
-	
+
 	public void addFunctionName(Long blockId, String functionName) throws SubroutineNameDuplicatedException
 	{
 		if (functionName.equals("loop") ||functionName.equals("setup") || functionNameSet.contains(functionName))
 		{
 			throw new SubroutineNameDuplicatedException(blockId);
 		}
-		
+
 		functionNameSet.add(functionName);
 	}
-	
+
 	public boolean containFunctionName(String name)
 	{
 		return functionNameSet.contains(name.trim());
 	}
-	
-	
+
+
 	public String buildVariableName()
 	{
 		return buildVariableName("");
 	}
-	
+
 	public String buildVariableName(String reference)
 	{
 		variableCnt = variableCnt + 1;
@@ -297,15 +297,15 @@ public class Translator
 		}
 		return varName;
 	}
-	
+
 	public Workspace getWorkspace() {
 		return workspace;
 	}
-	
+
 	public Block getBlock(Long blockId) {
 		return workspace.getEnv().getBlock(blockId);
 	}
-	
+
 	public void registerBodyTranslateFinishCallback(TranslatorBlock translatorBlock)
 	{
 		bodyTranslatreFinishCallbackSet.add(translatorBlock);
@@ -341,39 +341,39 @@ public class Translator
 	public void setGuinoProgram(boolean isGuinoProgram) {
 		this.isGuinoProgram = isGuinoProgram;
 	}
-	
+
 	public Set<RenderableBlock> findEntryBlocks()
 	{
 		Set<RenderableBlock> loopBlockSet = new HashSet<RenderableBlock>();
 		Iterable<RenderableBlock> renderableBlocks = workspace.getRenderableBlocks();
-		
+
 		for (RenderableBlock renderableBlock:renderableBlocks)
 		{
 			Block block = renderableBlock.getBlock();
-			
+
 			if (!block.hasPlug() && (Block.NULL.equals(block.getBeforeBlockID())))
 			{
 				if(block.getGenusName().equals("loop"))
 				{
 					loopBlockSet.add(renderableBlock);
 				}
-				if(block.getGenusName().equals("loop1"))
+				else if(block.getGenusName().equals("loop1"))
 				{
 					loopBlockSet.add(renderableBlock);
 				}
-				if(block.getGenusName().equals("loop2"))
+				else if(block.getGenusName().equals("loop2"))
 				{
 					loopBlockSet.add(renderableBlock);
 				}
-				if(block.getGenusName().equals("loop3"))
+				else if(block.getGenusName().equals("loop3"))
 				{
 					loopBlockSet.add(renderableBlock);
 				}
-				if(block.getGenusName().equals("program"))
+				else if(block.getGenusName().equals("program"))
 				{
 					loopBlockSet.add(renderableBlock);
 				}
-				if(block.getGenusName().equals("setup"))
+				else if(block.getGenusName().equals("setup"))
 				{
 					loopBlockSet.add(renderableBlock);
 				}
@@ -382,16 +382,16 @@ public class Translator
 		
 		return loopBlockSet;
 	}
-	
+
 	public Set<RenderableBlock> findSubroutineBlocks() throws SubroutineNameDuplicatedException
 	{
 		Set<RenderableBlock> subroutineBlockSet = new HashSet<RenderableBlock>();
 		Iterable<RenderableBlock> renderableBlocks = workspace.getRenderableBlocks();
-		
+
 		for (RenderableBlock renderableBlock:renderableBlocks)
 		{
 			Block block = renderableBlock.getBlock();
-			
+
 			if (!block.hasPlug() && (Block.NULL.equals(block.getBeforeBlockID())))
 			{
 				if (block.getGenusName().equals("subroutine"))
@@ -400,23 +400,23 @@ public class Translator
 					this.addFunctionName(block.getBlockID(), functionName);
 					subroutineBlockSet.add(renderableBlock);
 				}
-				
+
 			}
 		}
-		
+
 		return subroutineBlockSet;
 	}
-	
+
 	public String translate(Set<RenderableBlock> loopBlocks, Set<RenderableBlock> subroutineBlocks) throws SocketNullException, SubroutineNotDeclaredException
 	{
 		StringBuilder code = new StringBuilder();
-		
+
 		for (RenderableBlock renderableBlock : loopBlocks)
 		{
 			Block loopBlock = renderableBlock.getBlock();
 			code.append(translate(loopBlock.getBlockID()));
 		}
-		
+
 		for (RenderableBlock renderableBlock : subroutineBlocks)
 		{
 			Block subroutineBlock = renderableBlock.getBlock();
@@ -424,15 +424,15 @@ public class Translator
 		}
 		beforeGenerateHeader();
 		code.insert(0, genreateHeaderCommand());
-		
+
 		return code.toString();
 	}
-	
+
 	public Object getInternalData(String name)
 	{
 		return internalData.get(name);
 	}
-	
+
 	public void addInternalData(String name, Object value)
 	{
 		internalData.put(name, value);

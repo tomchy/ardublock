@@ -2530,6 +2530,12 @@
 			</BlockConnectors>
 		</BlockGenus>
 
+		<BlockGenus name="serial_read_line" kind="data" color="245 245 245" initlabel="bg.serial_read_line">
+			<BlockConnectors>
+				<BlockConnector connector-type="string" connector-kind="plug" position-type="mirror" />
+			</BlockConnectors>
+		</BlockGenus>
+
 		<BlockGenus name="serial_parseInt" kind="data" color="245 245 245" initlabel="bg.serial_parseInt">
 			<BlockConnectors>
 				<BlockConnector connector-type="number" connector-kind="plug" position-type="mirror" />
@@ -4969,6 +4975,7 @@
 				<BlockGenusMember>serial_available</BlockGenusMember>
 				<BlockGenusMember>serial_available2</BlockGenusMember>
 				<BlockGenusMember>serial_read</BlockGenusMember>
+				<BlockGenusMember>serial_read_line</BlockGenusMember>
 				<BlockGenusMember>serial_read_poly</BlockGenusMember>
 				<BlockGenusMember>serial_parseInt</BlockGenusMember>
 			</BlockDrawer>
