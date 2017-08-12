@@ -470,6 +470,24 @@
 			</BlockConnectors>
 		</BlockGenus>
 
+		<BlockGenus name="pin-attach-interrupt" kind="command" color="77 191 169" initlabel="bg.pin-attach-interrupt">
+			<description>
+				<text>attach interrupt</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="pin">
+					<DefaultArg genus-name="pinListDigital_D2" label="D2" />
+				</BlockConnector>
+				<BlockConnector connector-type="string" connector-kind="socket" label="trigger">
+					<DefaultArg genus-name="interrupt_mode_rising" label="Rising edge" />
+				</BlockConnector>
+				<BlockConnector connector-type="boolean" connector-kind="socket" label="pull-up">
+					<DefaultArg genus-name="digital-off" label="OFF"/>
+				</BlockConnector>
+				<BlockConnector label="bc.commands" connector-type="cmd" connector-kind="socket" />
+			</BlockConnectors>
+		</BlockGenus>
+
 		<BlockGenus name="tone" kind="command" color="77 191 169" initlabel="tone">
 			<description>
 				<text>Generates a square wave of the specified frequency (and 50%
@@ -4432,6 +4450,60 @@
 			</BlockConnectors>
 		</BlockGenus>
 
+		<BlockGenus name="interrupt_mode_rising" kind="data" color="204 153 255" initlabel="bg.interrupt_mode_rising">
+			<description>
+				<text>
+					 rising edge
+				</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="string" connector-kind="plug" position-type="single" />
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="interrupt_mode_falling" kind="data" color="204 153 255" initlabel="bg.interrupt_mode_falling">
+			<description>
+				<text>
+					 falling edge
+				</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="string" connector-kind="plug" position-type="single" />
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="interrupt_mode_change" kind="data" color="204 153 255" initlabel="bg.interrupt_mode_change">
+			<description>
+				<text>
+					 on change
+				</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="string" connector-kind="plug" position-type="single" />
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="interrupt_mode_high" kind="data" color="204 153 255" initlabel="bg.interrupt_mode_high">
+			<description>
+				<text>
+					 on high
+				</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="string" connector-kind="plug" position-type="single" />
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="interrupt_mode_low" kind="data" color="204 153 255" initlabel="bg.interrupt_mode_low">
+			<description>
+				<text>
+					 on low
+				</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="string" connector-kind="plug" position-type="single" />
+			</BlockConnectors>
+		</BlockGenus>
 
 		<!-- trigger -->
 
@@ -4585,8 +4657,6 @@
 			<FamilyMember>false</FamilyMember>
 		</BlockFamily>
 		<BlockFamily>
-
-
 			<FamilyMember>addition</FamilyMember>
 			<FamilyMember>subtraction</FamilyMember>
 			<FamilyMember>multiplication</FamilyMember>
@@ -4796,6 +4866,13 @@
 			<FamilyMember>output_mode_lowpulse</FamilyMember>
 		</BlockFamily>
 		<BlockFamily>
+			<FamilyMember>interrupt_mode_rising</FamilyMember>
+			<FamilyMember>interrupt_mode_falling</FamilyMember>
+			<FamilyMember>interrupt_mode_change</FamilyMember>
+			<FamilyMember>interrupt_mode_high</FamilyMember>
+			<FamilyMember>interrupt_mode_low</FamilyMember>
+		</BlockFamily>
+		<BlockFamily>
 			<FamilyMember>DDRA</FamilyMember>
 			<FamilyMember>DDRB</FamilyMember>
 			<FamilyMember>DDRC</FamilyMember>
@@ -4877,6 +4954,8 @@
 				<BlockGenusMember>pin-read-digital-pullup</BlockGenusMember>
 				<BlockGenusMember>pin-read-analog</BlockGenusMember>
 				<BlockGenusMember>pin-write-analog</BlockGenusMember>
+				<BlockGenusMember>pin-attach-interrupt</BlockGenusMember>
+				<BlockGenusMember>interrupt_mode_rising</BlockGenusMember>
 				<BlockGenusMember>tone</BlockGenusMember>
 				<BlockGenusMember>tone_time</BlockGenusMember>
 				<BlockGenusMember>no_tone</BlockGenusMember>
