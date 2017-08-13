@@ -4640,6 +4640,41 @@
 			</BlockConnectors>
 		</BlockGenus>
 
+		<!-- AlmuBot blocks -->
+		<BlockGenus name="almubot_pid_setup" kind="command" color="29 79 130" initlabel="bg.almubot_pid_setup" editable-label="yes">
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="Max">
+					<DefaultArg genus-name="number_double" label="255"/>
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="Min">
+					<DefaultArg genus-name="number_double" label="0"/>
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="P">
+					<DefaultArg genus-name="number_double" label="0"/>
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="I">
+					<DefaultArg genus-name="number_double" label="0"/>
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="D">
+					<DefaultArg genus-name="number_double" label="0"/>
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="almubot_pid_update" kind="command" color="29 79 130" initlabel="bg.almubot_pid_update" editable-label="yes">
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="Variable">
+					<DefaultArg genus-name="variable_number" label="speed"/>
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="Goal">
+					<DefaultArg genus-name="number" label="0"/>
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="Current">
+					<DefaultArg genus-name="number" label="0"/>
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+		<!-- End Of AlmuBot blocks -->
 	</BlockGenuses>
 
 <!-- Start of Ardublock Standard UI layout -->
@@ -5085,6 +5120,11 @@
 				<!-- <BlockGenusMember>sd_write</BlockGenusMember> -->
 				<!-- <BlockGenusMember>sd_write_number</BlockGenusMember> -->
 				<!-- <BlockGenusMember>sd_write_number_int</BlockGenusMember> -->
+			</BlockDrawer>
+
+			<BlockDrawer name="bd.almubot" type="factory" is-open="yes" button-color="141 172 203">
+				<BlockGenusMember>almubot_pid_setup</BlockGenusMember>
+				<BlockGenusMember>almubot_pid_update</BlockGenusMember>
 			</BlockDrawer>
 
 			<!-- Shapes are automatically loaded as blocks in the Shapes drawer (see slcodeblocks.ShapeBlocksGenerator for details) -->
