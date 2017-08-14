@@ -23,5 +23,8 @@ void PID::update(int measured, int setpoint, int* process_variable) {
     out = (out > this->min_integral) ? out : this->min_integral;
     out = (out < this->max_integral) ? out : this->max_integral;
 
-    *process_variable = (int) out;
+    *process_variable += (int) out;
+    
+    *process_variable = (*process_variable > this->min_integral) ? *process_variable : this->min_integral;
+    *process_variable = (*process_variable < this->max_integral) ? *process_variable : this->max_integral;
 }
