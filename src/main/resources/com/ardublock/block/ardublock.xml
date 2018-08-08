@@ -4674,6 +4674,84 @@
 				</BlockConnector>
 			</BlockConnectors>
 		</BlockGenus>
+
+		<BlockGenus name="almubot_color_setup" kind="command" color="29 79 130" initlabel="bg.almubot_color_setup" editable-label="yes">
+			<description>
+				<text>CCD color sensor</text>
+			</description>
+			<Images>
+				<Image>
+					<FileLocation>com/ardublock/block/GY-31.png</FileLocation>
+				</Image>
+			</Images>
+
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="OUT">
+					<DefaultArg genus-name="pinListDigital_D2" label="D2" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="S2">
+					<DefaultArg genus-name="pinListDigital_D3" label="D3" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="S3">
+					<DefaultArg genus-name="pinListDigital_D4" label="D4" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="almubot_color_read" kind="data" color="29 79 130" initlabel="bg.almubot_color_read" editable-label="yes">
+			<description>
+				<text>CCD color sensor</text>
+			</description>
+
+			<BlockConnectors>
+				<BlockConnector connector-type="string" connector-kind="socket" label="filter">
+					<DefaultArg genus-name="almubot_color_white" label="White color" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="plug" position-type="single" />
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="almubot_color_red" kind="data" color="29 79 130" initlabel="bg.almubot_color_red">
+			<description>
+				<text>
+					 red color
+				</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="string" connector-kind="plug" position-type="single" />
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="almubot_color_green" kind="data" color="29 79 130" initlabel="bg.almubot_color_green">
+			<description>
+				<text>
+					 green color
+				</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="string" connector-kind="plug" position-type="single" />
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="almubot_color_blue" kind="data" color="29 79 130" initlabel="bg.almubot_color_blue">
+			<description>
+				<text>
+					 blue color
+				</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="string" connector-kind="plug" position-type="single" />
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="almubot_color_white" kind="data" color="29 79 130" initlabel="bg.almubot_color_white">
+			<description>
+				<text>
+					 white color
+				</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="string" connector-kind="plug" position-type="single" />
+			</BlockConnectors>
+		</BlockGenus>
+
 		<!-- End Of AlmuBot blocks -->
 	</BlockGenuses>
 
@@ -4958,6 +5036,15 @@
 			<FamilyMember>Midi_B</FamilyMember>
 		</BlockFamily>
 
+		<!-- AlmuBot types -->
+		<BlockFamily>
+			<FamilyMember>almubot_color_red</FamilyMember>
+			<FamilyMember>almubot_color_green</FamilyMember>
+			<FamilyMember>almubot_color_blue</FamilyMember>
+			<FamilyMember>almubot_color_white</FamilyMember>
+		</BlockFamily>
+		<!-- End Of AlmuBot types -->
+
 	</BlockFamilies>
 
 	<BlockDrawerSets>
@@ -5125,6 +5212,9 @@
 			<BlockDrawer name="bd.almubot" type="factory" is-open="yes" button-color="141 172 203">
 				<BlockGenusMember>almubot_pid_setup</BlockGenusMember>
 				<BlockGenusMember>almubot_pid_update</BlockGenusMember>
+				<BlockGenusMember>almubot_color_setup</BlockGenusMember>
+				<BlockGenusMember>almubot_color_read</BlockGenusMember>
+				<BlockGenusMember>almubot_color_white</BlockGenusMember>
 			</BlockDrawer>
 
 			<!-- Shapes are automatically loaded as blocks in the Shapes drawer (see slcodeblocks.ShapeBlocksGenerator for details) -->
