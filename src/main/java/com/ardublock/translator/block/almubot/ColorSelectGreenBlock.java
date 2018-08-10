@@ -10,6 +10,6 @@ public class ColorSelectGreenBlock extends ConstBlock
 	public ColorSelectGreenBlock(Long blockId, Translator translator, String codePrefix, String codeSuffix, String label)
 	{
 		super(blockId, translator, codePrefix, codeSuffix, label);
-		this.setCode("[1]");
+		this.setCode("GY31_GREEN");
 	}
 }

@@ -8,11 +8,11 @@ import com.ardublock.translator.block.exception.BlockException;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
 
-public class ColorReadBlock extends TranslatorBlock
+public class EncoderReadBlock extends TranslatorBlock
 {
 	private static ResourceBundle uiMessageBundle = ResourceBundle.getBundle("com/ardublock/block/ardublock");
 
-	public ColorReadBlock(Long blockId, Translator translator, String codePrefix, String codeSuffix, String label)
+	public EncoderReadBlock(Long blockId, Translator translator, String codePrefix, String codeSuffix, String label)
 	{
 		super(blockId, translator, codePrefix, codeSuffix, label);
 	}
@@ -20,9 +20,9 @@ public class ColorReadBlock extends TranslatorBlock
 	@Override
 	public String toCode() throws SocketNullException, SubroutineNotDeclaredException
 	{
-		TranslatorBlock color = this.getRequiredTranslatorBlockAtSocket(0);
+		TranslatorBlock propetyReader = this.getRequiredTranslatorBlockAtSocket(0);
 
-		String command = label + ".read_color(" + color.toCode() + ")";
+		String command = "ENC_" + label + "." + propetyReader.toCode();
 
 		return codePrefix + command + codeSuffix;
 	}

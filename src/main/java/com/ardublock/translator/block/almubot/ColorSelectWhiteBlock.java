@@ -10,6 +10,6 @@ public class ColorSelectWhiteBlock extends ConstBlock
 	public ColorSelectWhiteBlock(Long blockId, Translator translator, String codePrefix, String codeSuffix, String label)
 	{
 		super(blockId, translator, codePrefix, codeSuffix, label);
-		this.setCode("[3]");
+		this.setCode("GY31_WHITE");
 	}
 }

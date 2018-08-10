@@ -4,12 +4,12 @@ import java.util.ResourceBundle;
 import com.ardublock.translator.Translator;
 import com.ardublock.translator.block.ConstBlock;
 
-public class ColorSelectRedBlock extends ConstBlock
+public class EncoderSelectDirFwdBlock extends ConstBlock
 {
 
-	public ColorSelectRedBlock(Long blockId, Translator translator, String codePrefix, String codeSuffix, String label)
+	public EncoderSelectDirFwdBlock(Long blockId, Translator translator, String codePrefix, String codeSuffix, String label)
 	{
 		super(blockId, translator, codePrefix, codeSuffix, label);
-		this.setCode("GY31_RED");
+		this.setCode("ENC_DIR_FWD");
 	}
 }

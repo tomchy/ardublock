@@ -4752,6 +4752,133 @@
 			</BlockConnectors>
 		</BlockGenus>
 
+		<BlockGenus name="almubot_encoder_setup" kind="command" color="29 79 130" initlabel="bg.almubot_encoder_setup" editable-label="yes">
+			<description>
+				<text>Motor encoder</text>
+			</description>
+
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="TicksPerRev">
+					<DefaultArg genus-name="number" label="10" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="ENA">
+					<DefaultArg genus-name="pinListDigital_D2" label="D2" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="ENB">
+					<DefaultArg genus-name="pinListDigital_D3" label="D3" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="almubot_encoder_process" kind="command" color="29 79 130" initlabel="bg.almubot_encoder_process" editable-label="yes">
+			<description>
+				<text>Sample encoder values</text>
+			</description>
+
+			<BlockConnectors>
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="almubot_encoder_read" kind="data" color="29 79 130" initlabel="bg.almubot_encoder_read" editable-label="yes">
+			<description>
+				<text>Read current encoder values</text>
+			</description>
+
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="Property">
+					<DefaultArg genus-name="almubot_encoder_read_revs" label="Revolutions" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="plug" position-type="single" />
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="almubot_encoder_fwd" kind="data" color="29 79 130" initlabel="bg.almubot_encoder_fwd">
+			<description>
+				<text>
+					 Forwdard direction
+				</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="plug" position-type="single" />
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="almubot_encoder_rwd" kind="data" color="29 79 130" initlabel="bg.almubot_encoder_rwd">
+			<description>
+				<text>
+					 Reverse direction
+				</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="plug" position-type="single" />
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="almubot_encoder_stop" kind="data" color="29 79 130" initlabel="bg.almubot_encoder_stop">
+			<description>
+				<text>
+					 Motor stopped
+				</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="plug" position-type="single" />
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="almubot_encoder_read_angle" kind="data" color="29 79 130" initlabel="bg.almubot_encoder_read_angle">
+			<description>
+				<text>
+					 Read angle
+				</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="plug" position-type="single" />
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="almubot_encoder_read_direction" kind="data" color="29 79 130" initlabel="bg.almubot_encoder_read_direction">
+			<description>
+				<text>
+					 Read direction
+				</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="plug" position-type="single" />
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="almubot_encoder_read_ticks" kind="data" color="29 79 130" initlabel="bg.almubot_encoder_read_ticks">
+			<description>
+				<text>
+					 Read angle
+				</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="plug" position-type="single" />
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="almubot_encoder_read_revs" kind="data" color="29 79 130" initlabel="bg.almubot_encoder_read_revs">
+			<description>
+				<text>
+					 Read direction
+				</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="plug" position-type="single" />
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="almubot_timer_setup" kind="command" color="29 79 130" initlabel="bg.almubot_timer_setup" editable-label="yes">
+			<description>
+				<text>Timer2 setup</text>
+			</description>
+
+			<BlockConnectors>
+				<BlockConnector connector-type="string" connector-kind="socket" label="Subroutine">
+					<DefaultArg genus-name="message" label="Timer2Int"/>
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="OCR2A">
+					<DefaultArg genus-name="number" label="249" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+
 		<!-- End Of AlmuBot blocks -->
 	</BlockGenuses>
 
@@ -5043,6 +5170,20 @@
 			<FamilyMember>almubot_color_blue</FamilyMember>
 			<FamilyMember>almubot_color_white</FamilyMember>
 		</BlockFamily>
+
+		<BlockFamily>
+			<FamilyMember>almubot_encoder_fwd</FamilyMember>
+			<FamilyMember>almubot_encoder_rwd</FamilyMember>
+			<FamilyMember>almubot_encoder_stop</FamilyMember>
+		</BlockFamily>
+
+		<BlockFamily>
+			<FamilyMember>almubot_encoder_read_angle</FamilyMember>
+			<FamilyMember>almubot_encoder_read_direction</FamilyMember>
+			<FamilyMember>almubot_encoder_read_ticks</FamilyMember>
+			<FamilyMember>almubot_encoder_read_revs</FamilyMember>
+		</BlockFamily>
+
 		<!-- End Of AlmuBot types -->
 
 	</BlockFamilies>
@@ -5215,6 +5356,14 @@
 				<BlockGenusMember>almubot_color_setup</BlockGenusMember>
 				<BlockGenusMember>almubot_color_read</BlockGenusMember>
 				<BlockGenusMember>almubot_color_white</BlockGenusMember>
+
+				<BlockGenusMember>almubot_encoder_setup</BlockGenusMember>
+				<BlockGenusMember>almubot_encoder_read</BlockGenusMember>
+				<BlockGenusMember>almubot_encoder_process</BlockGenusMember>
+				<BlockGenusMember>almubot_encoder_fwd</BlockGenusMember>
+				<BlockGenusMember>almubot_encoder_read_revs</BlockGenusMember>
+
+				<BlockGenusMember>almubot_timer_setup</BlockGenusMember>
 			</BlockDrawer>
 
 			<!-- Shapes are automatically loaded as blocks in the Shapes drawer (see slcodeblocks.ShapeBlocksGenerator for details) -->
