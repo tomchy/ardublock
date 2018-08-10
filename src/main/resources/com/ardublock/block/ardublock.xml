@@ -4759,7 +4759,7 @@
 
 			<BlockConnectors>
 				<BlockConnector connector-type="number" connector-kind="socket" label="TicksPerRev">
-					<DefaultArg genus-name="number" label="10" />
+					<DefaultArg genus-name="number" label="20" />
 				</BlockConnector>
 				<BlockConnector connector-type="number" connector-kind="socket" label="ENA">
 					<DefaultArg genus-name="pinListDigital_D2" label="D2" />
